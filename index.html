@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RZ AutoSpa — Exotic & Luxury Auto Detailing, El Paso TX</title>
+<meta name="description" content="Meticulous, paint-safe mobile detailing for exotics, supercars and luxury vehicles across El Paso. Hand-only methods, brought to your garage.">
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2109885836633130');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2109885836633130&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel -->
+<style>
+  @font-face { font-family: 'Caslon Display'; font-weight: 400; font-style: normal; font-display: swap;
+    src: url(fonts/caslon400.woff2) format('woff2'); }
+  @font-face { font-family: 'Work Sans'; font-weight: 400; font-style: normal; font-display: swap;
+    src: url(fonts/work400.woff2) format('woff2'); }
+  @font-face { font-family: 'Work Sans'; font-weight: 600; font-style: normal; font-display: swap;
+    src: url(fonts/work600.woff2) format('woff2'); }
+  @font-face { font-family: 'Plex Mono'; font-weight: 500; font-style: normal; font-display: swap;
+    src: url(fonts/plexmono500.woff2) format('woff2'); }
+  :root {
+    --bg: #120f0b;
+    --bg-2: #1a140b;
+    --bg-3: #21190d;
+    --ink: #f2ead9;
+    --ink-dim: #b6a98d;
+    --ink-faint: #7d735c;
+    --gold: #d4af37;
+    --gold-soft: #b6912e;
+    --gold-dim: #6e5a22;
+    --line: rgba(212,175,55,0.16);
+    --line-strong: rgba(212,175,55,0.32);
+    --radius: 3px;
+    --measure: 62ch;
+    --edge: clamp(20px, 6vw, 88px);
+    font-synthesis: none;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1100px 640px at 88% -120px, color-mix(in srgb, var(--gold-dim) 55%, transparent), transparent 62%),
+      radial-gradient(900px 700px at -8% 92%, rgba(0,0,0,0.55), transparent 58%),
+      var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Caslon Display', Georgia, serif; font-weight: 400; margin: 0; }
+  .num, .price, .stat-num, .kicker-num { font-family: 'Plex Mono', ui-monospace, monospace; font-feature-settings: "tnum" 1; }
+
+  a { color: inherit; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--edge); }
+
+  /* ---------- nav ---------- */
+  .nav {
+    display: flex; align-items: center; gap: 32px;
+    padding: 22px var(--edge);
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav img { height: 40px; width: auto; margin-right: auto; mix-blend-mode: lighten; }
+  .nav a { text-decoration: none; color: var(--ink-dim); font-size: 14px; letter-spacing: 0.02em; white-space: nowrap; transition: color .2s ease; }
+  .nav a:hover { color: var(--ink); }
+  @media (max-width: 620px) { .nav a.navlink { display: none; } }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    border-radius: var(--radius); padding: 13px 24px; font-size: 14px; font-weight: 600;
+    letter-spacing: 0.01em; cursor: pointer; text-decoration: none; border: 1px solid transparent;
+    transition: transform .18s cubic-bezier(0.16,1,0.3,1), background .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { background: var(--gold); color: #1a1204; }
+  .btn-primary:hover { background: #e6c250; }
+  .btn-ghost { border-color: var(--line-strong); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  .btn-sm { padding: 9px 16px; font-size: 13px; }
+
+  /* ---------- kicker ---------- */
+  .kicker { position: relative; display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    margin: 0 0 20px; }
+  .kicker::before { content: ""; width: 30px; height: 1px; background: var(--gold-soft); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: clamp(64px, 10vw, 128px) 0 72px; }
+  .hero-mark {
+    position: fixed; top: 50%; left: 50%; width: clamp(380px, 42vw, 640px);
+    height: auto; transform: translate(-50%, -50%); mix-blend-mode: lighten; opacity: 0.14;
+    pointer-events: none; user-select: none; z-index: 0;
+  }
+  @media (max-width: 780px) { .hero-mark { opacity: 0.09; width: 72vw; } }
+  .hero-inner { max-width: 880px; position: relative; z-index: 1; }
+  .display {
+    font-size: clamp(38px, 5.6vw, 74px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .display .line { display: block; }
+  .display .line.accent { color: var(--gold); }
+  .hero .sub { font-size: 17.5px; line-height: 1.7; max-width: var(--measure); color: var(--ink-dim);
+    margin: 28px 0 0; }
+  .hero .row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+
+  /* ---------- stats ---------- */
+  .stats { background:
+      radial-gradient(760px 360px at 86% -30%, rgba(212,175,55,0.14), transparent 65%),
+      var(--bg-2);
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 44px 0; }
+  .stats .grid { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 28px 24px; }
+  .stat-num { font-size: clamp(30px, 3.4vw, 46px); color: var(--ink); }
+  .stat-label { font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-top: 8px; }
+  @media (max-width: 640px) { .stats .grid { grid-template-columns: repeat(2, 1fr); justify-content: start; } }
+
+  /* ---------- section rhythm ---------- */
+  section { padding: clamp(56px, 8vw, 96px) 0; }
+  .section-head { max-width: var(--measure); margin-bottom: 40px; }
+  .section-title { font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.01em; }
+  .section-note { font-size: 15.5px; color: var(--ink-dim); margin-top: 14px; max-width: 52ch; }
+
+  /* ---------- services ---------- */
+  .services-layout { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 56px; align-items: start; }
+  @media (max-width: 900px) { .services-layout { grid-template-columns: 1fr; } }
+
+  .service-group { margin-top: 40px; }
+  .service-group:first-child { margin-top: 0; }
+  .service-group-title { font-size: 19px; color: var(--gold-soft); letter-spacing: 0.01em; margin-bottom: 6px; }
+  .service-group-desc { font-size: 14px; color: var(--ink-faint); max-width: 58ch; margin-bottom: 14px; }
+
+  .service-row { display: grid; grid-template-columns: 22px minmax(0,1fr) auto; gap: 8px 20px;
+    align-items: start; padding: 16px 0; border-top: 1px solid var(--line); cursor: pointer; }
+  .service-group > .service-row:first-of-type { border-top: 1px solid var(--line); }
+  .service-row:hover { background: color-mix(in srgb, var(--gold) 4%, transparent); }
+  .service-row:has(.chk:checked) { background: color-mix(in srgb, var(--gold) 8%, transparent); }
+
+  .chk { appearance: none; width: 17px; height: 17px; margin-top: 3px; border-radius: 3px;
+    border: 1px solid var(--ink-faint); background: transparent; cursor: pointer; position: relative; flex-shrink: 0; }
+  .chk:hover { border-color: var(--gold); }
+  .chk:checked { background: var(--gold); border-color: var(--gold); }
+  .chk:checked::after { content: ""; position: absolute; left: 5px; top: 2px; width: 4px; height: 8px;
+    border: solid #1a1204; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .chk:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .service-name { font-size: 15.5px; font-weight: 600; color: var(--ink); margin: 0; }
+  .service-desc { font-size: 13.5px; color: var(--ink-faint); margin: 5px 0 0; max-width: 54ch; line-height: 1.55; }
+  .service-meta { text-align: right; white-space: nowrap; }
+  .price { display: block; font-size: 15.5px; color: var(--ink); }
+  .service-time { display: block; font-size: 12px; color: var(--ink-faint); margin-top: 3px; }
+
+  .summary-card { position: sticky; top: 96px; border: 1px solid var(--line-strong); border-radius: var(--radius);
+    background: var(--bg-2); padding: 26px; }
+  .summary-card h3 { font-size: 17px; margin-bottom: 16px; }
+  .appt-list { display: grid; gap: 10px; margin-bottom: 18px; min-height: 20px; }
+  .appt-empty { font-size: 13.5px; color: var(--ink-faint); margin: 0; }
+  .appt-item { display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; color: var(--ink-dim); }
+  .appt-item .p { color: var(--ink); }
+  .appt-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-top: 1px solid var(--line); padding-top: 16px; }
+  .appt-total { font-size: 17px; color: var(--ink); }
+  .appt-note { font-size: 12px; line-height: 1.6; color: var(--ink-faint); margin-top: 14px; }
+
+  /* ---------- gallery ---------- */
+  .gallery-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: auto auto; gap: 14px; }
+  .g-card { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; background: var(--bg-2);
+    border: 1px solid var(--line); }
+  .g-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .g-card .tag { position: absolute; top: 10px; left: 10px; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 5px 9px; border-radius: 2px; background: rgba(18,15,11,0.78); backdrop-filter: blur(4px);
+    border: 1px solid var(--line-strong); color: var(--ink); }
+  .g-card .tag.gold { color: var(--gold); border-color: var(--gold-dim); }
+  .g-1 { grid-column: 1; grid-row: 1 / span 2; }
+  .g-1 img { aspect-ratio: 4/5; }
+  .g-2 { grid-column: 2; grid-row: 1; }
+  .g-2 img, .g-3 img { aspect-ratio: 1/1; }
+  .g-3 { grid-column: 3; grid-row: 1; }
+  .g-4 { grid-column: 2; grid-row: 2; }
+  .g-4 img, .g-5 img { aspect-ratio: 1/1; }
+  .g-5 { grid-column: 3; grid-row: 2; }
+  .g-6 { grid-column: 1 / -1; grid-row: 3; margin-top: 0; }
+  .g-6 img { aspect-ratio: 21/9; }
+  @media (max-width: 780px) {
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .g-1 { grid-column: 1 / -1; grid-row: auto; }
+    .g-1 img { aspect-ratio: 16/9; }
+    .g-2, .g-3, .g-4, .g-5 { grid-column: auto; grid-row: auto; }
+    .g-6 { grid-column: 1 / -1; }
+  }
+
+  /* ---------- reviews ---------- */
+  .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 40px; margin-top: 8px; }
+  @media (max-width: 780px) { .review-grid { grid-template-columns: 1fr; } }
+  .review-card { border-top: 1px solid var(--line-strong); padding-top: 20px; }
+  .review-card .stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 12px; }
+  .review-card blockquote { font-family: 'Caslon Display', Georgia, serif; font-size: 19px; line-height: 1.5;
+    margin: 0; color: var(--ink); }
+  .review-card .meta { font-size: 12.5px; color: var(--ink-faint); margin-top: 14px; }
+
+  /* ---------- book ---------- */
+  .book-inner { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 64px; align-items: start; }
+  @media (max-width: 900px) { .book-inner { grid-template-columns: 1fr; gap: 40px; } }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; min-height: 22px; }
+  .svc-tag { font-size: 12.5px; padding: 6px 11px; border-radius: 20px; border: 1px solid var(--gold-dim);
+    color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
+  .picked-label { display: block; font-size: 12.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .picked-block { margin-bottom: 28px; }
+
+  /* ---------- cal.com embed ---------- */
+  .cal-embed { min-height: 560px; border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; background: var(--bg-2); }
+  .cal-fallback { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; justify-content: center;
+    min-height: 560px; padding: 32px; }
+  .cal-fallback p { font-size: 14.5px; color: var(--ink-dim); margin: 0; max-width: 42ch; }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 32px 0 44px; font-size: 13px; color: var(--ink-faint); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 6px; align-items: center; justify-content: space-between; }
+  footer a { color: var(--ink-dim); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  .rule { height: 1px; border: 0; background: linear-gradient(to right, transparent, var(--line-strong) 15%, var(--line-strong) 85%, transparent); margin: 0; }
+
+  ::selection { background: var(--gold); color: #1a1204; }
+</style>
+</head>
+<body>
+
+
+<img class="hero-mark" src="images/logo-watermark.webp" alt="" aria-hidden="true">
+
+<nav class="nav">
+  <img src="images/logo.webp" alt="RZ AutoSpa">
+  <a class="navlink" href="#services" aria-current="location">Services</a>
+  <a class="navlink" href="#gallery">Gallery</a>
+  <a class="navlink" href="#book">Book</a>
+  <button type="button" class="btn btn-primary btn-sm" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Book now</button>
+</nav>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 class="display">
+        <span class="line">Your exotic deserves</span>
+        <span class="line">more than a car wash.</span>
+        <span class="line accent">We bring concours-level</span>
+        <span class="line accent">care to your garage.</span>
+      </h1>
+      <p class="sub">RZ AutoSpa is meticulous, paint-safe mobile detailing for exotics, supercars and luxury vehicles across El Paso — hand-only methods, no shortcuts, brought right to your garage. Book a slot and we do the rest.</p>
+      <div class="row">
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Book an appointment</button>
+        <a href="tel:19152534274" class="btn btn-ghost">Call (915) 253-4274</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="stats" aria-label="RZ AutoSpa, by the numbers">
+  <div class="wrap">
+    <div class="grid">
+      <div><p class="stat-num">5.0★</p><p class="stat-label">Average review rating</p></div>
+      <div><p class="stat-num">500+</p><p class="stat-label">Exotics &amp; luxury cars detailed</p></div>
+      <div><p class="stat-num">7</p><p class="stat-label">Days a week booking</p></div>
+      <div><p class="stat-num">100%</p><p class="stat-label">Satisfaction guaranteed</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <section id="services">
+    <div class="services-layout">
+      <div>
+        <span class="kicker">What we detail</span>
+
+        <div class="service-group">
+          <h3 class="service-group-title">Full detail</h3>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Full detail — Small SUV and trucks" data-price="195.00" data-duration="4 hr"><div><p class="service-name">Small SUV and trucks</p><p class="service-desc">Shampoo of seats and carpets, vacuum, blow out, leather/vinyl/plastic dressing, deep wipe down of interior plastics. Pre-wash, contact wash, deep wheel cleaning, hand dry, tire and trim dressing, windows in &amp; out.</p></div><div class="service-meta"><span class="price">$195.00</span><span class="service-time">4 hr</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Full detail — Exotic and supercars" data-price="250.00" data-duration="4 hr"><div><p class="service-name">Exotic and supercars</p><p class="service-desc">Shampoo of seats and carpets, vacuum, blow out, leather/vinyl/plastic dressing, deep wipe down of interior plastics. Pre-wash, contact wash, deep wheel cleaning, hand dry, tire and trim dressing, windows in &amp; out.</p></div><div class="service-meta"><span class="price">$250.00</span><span class="service-time">4 hr</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Full detail — 2/4 door sedan" data-price="175.00" data-duration="4 hr 30 min"><div><p class="service-name">2/4 door sedan</p><p class="service-desc">Shampoo of seats and carpets, vacuum, blow out, leather/vinyl/plastic dressing, deep wipe down of interior plastics. Pre-wash, contact wash, deep wheel cleaning, hand dry, tire and trim dressing, windows in &amp; out.</p></div><div class="service-meta"><span class="price">$175.00</span><span class="service-time">4 hr 30 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Full detail — 3-row SUV &amp; super duty trucks" data-price="225.00" data-duration="5 hr"><div><p class="service-name">3-row SUV &amp; super duty trucks</p><p class="service-desc">Shampoo of seats and carpets, vacuum, blow out, leather/vinyl/plastic dressing, deep wipe down of interior plastics. Pre-wash, contact wash, deep wheel cleaning, hand dry, tire and trim dressing, windows in &amp; out.</p></div><div class="service-meta"><span class="price">$225.00</span><span class="service-time">5 hr</span></div></label>
+        </div>
+
+        <div class="service-group">
+          <h3 class="service-group-title">Exterior wash</h3>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Exterior wash — Small SUV and trucks" data-price="65.00" data-duration="1 hr 30 min"><div><p class="service-name">Small SUV and trucks</p><p class="service-desc">Pre-wash (iron remover or bug remover), contact wash, deep wheel cleaning, hand dry, tire and trim dressing, windows in &amp; out.</p></div><div class="service-meta"><span class="price">$65.00</span><span class="service-time">1 hr 30 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Exterior wash — Exotic and supercars" data-price="120.00" data-duration="1 hr 30 min"><div><p class="service-name">Exotic and supercars</p><p class="service-desc">Pre-wash (iron remover or bug remover), contact wash, deep wheel cleaning, hand dry, tire and trim dressing, windows outside only.</p></div><div class="service-meta"><span class="price">$120.00</span><span class="service-time">1 hr 30 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Exterior wash — 3rd row SUV and super duty trucks" data-price="65.00" data-duration="1 hr 30 min"><div><p class="service-name">3rd row SUV and super duty trucks</p><p class="service-desc">Pre-wash (iron remover or bug remover), contact wash, deep wheel cleaning, hand dry, tire and trim dressing, windows outside only.</p></div><div class="service-meta"><span class="price">$65.00</span><span class="service-time">1 hr 30 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Exterior wash — 2/4 door sedan" data-price="50.00" data-duration="1 hr 20 min"><div><p class="service-name">2/4 door sedan</p><p class="service-desc">Pre-wash (iron remover or bug remover), contact wash, deep wheel cleaning, hand dry, tire and trim dressing, windows outside only.</p></div><div class="service-meta"><span class="price">$50.00</span><span class="service-time">1 hr 20 min</span></div></label>
+        </div>
+
+        <div class="service-group">
+          <h3 class="service-group-title">Basic detail</h3>
+          <p class="service-group-desc">Interior blow out and light wipe down, plus the full exterior wash — recommended to maintain your vehicle between full details.</p>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Basic detail — Exotic and supercars" data-price="225.00" data-duration="3 hr 30 min"><div><p class="service-name">Exotic and supercars</p></div><div class="service-meta"><span class="price">$225.00</span><span class="service-time">3 hr 30 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Basic detail — Small SUV and trucks" data-price="140.00" data-duration="3 hr 40 min"><div><p class="service-name">Small SUV and trucks</p></div><div class="service-meta"><span class="price">$140.00</span><span class="service-time">3 hr 40 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Basic detail — 3-row SUV and super duty trucks" data-price="180.00" data-duration="4 hr 30 min"><div><p class="service-name">3-row SUV and super duty trucks</p></div><div class="service-meta"><span class="price">$180.00</span><span class="service-time">4 hr 30 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Basic detail — 2/4 door sedan" data-price="125.00" data-duration="3 hr 30 min"><div><p class="service-name">2/4 door sedan</p></div><div class="service-meta"><span class="price">$125.00</span><span class="service-time">3 hr 30 min</span></div></label>
+        </div>
+
+        <div class="service-group">
+          <h3 class="service-group-title">Full interior detail</h3>
+          <p class="service-group-desc">Shampoo of seats and carpets, vacuum, blow out, leather/vinyl/plastic dressing, deep wipe down of interior plastics.</p>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Full interior detail — Small SUV and trucks" data-price="150.00" data-duration="3 hr 30 min"><div><p class="service-name">Small SUV and trucks</p></div><div class="service-meta"><span class="price">$150.00</span><span class="service-time">3 hr 30 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Full interior detail — 2/4 door sedan" data-price="125.00" data-duration="3 hr 30 min"><div><p class="service-name">2/4 door sedan</p></div><div class="service-meta"><span class="price">$125.00</span><span class="service-time">3 hr 30 min</span></div></label>
+        </div>
+
+        <div class="service-group">
+          <h3 class="service-group-title">Add-ons &amp; specialty</h3>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Add-ons &amp; specialty — Engine bay detail" data-price="45.00" data-duration="35 min"><div><p class="service-name">Engine bay detail</p><p class="service-desc">Deep clean of engine bay and application of engine bay preserver.</p></div><div class="service-meta"><span class="price">$45.00</span><span class="service-time">35 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Add-ons &amp; specialty — Water spot/scuff removal from windows" data-price="100.00" data-duration="45 min"><div><p class="service-name">Water spot/scuff removal from windows</p><p class="service-desc">Removes stubborn water spots and scuffs or scratches from everyday use — requires special equipment.</p></div><div class="service-meta"><span class="price">$100.00</span><span class="service-time">45 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Add-ons &amp; specialty — Pet hair removal" data-price="40.00" data-duration="40 min"><div><p class="service-name">Pet hair removal</p><p class="service-desc">Extra time and special tools/chemicals to ensure the vehicle is spotless.</p></div><div class="service-meta"><span class="price">$40.00</span><span class="service-time">40 min</span></div></label>
+          <label class="service-row"><input type="checkbox" class="chk" data-name="Add-ons &amp; specialty — Off-road vehicle" data-price="100.00" data-duration="1 hr 50 min"><div><p class="service-name">Off-road vehicle</p><p class="service-desc">Deep cleaning and protection for side-by-sides, Can-Ams, ATVs and adventure vehicles.</p></div><div class="service-meta"><span class="price">$100.00</span><span class="service-time">1 hr 50 min</span></div></label>
+        </div>
+      </div>
+
+      <div class="summary-card" id="apptSummary">
+        <h3>Appointment summary</h3>
+        <div class="appt-list" id="apptList"><p class="appt-empty">No services added yet</p></div>
+        <div class="appt-footer"><p class="appt-total num" id="apptTotal"></p><button type="button" class="btn btn-primary btn-sm" id="apptNext">Next</button></div>
+        <p class="appt-note">Pricing shown is an estimate. Payment is collected in person (cash, card or Zelle) — nothing is charged online.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="section-head">
+      <span class="kicker">Gallery</span>
+      <h2 class="section-title">See the transformation</h2>
+      <p class="section-note">A look at recent work — the same meticulous, hand-only process on every vehicle that comes through, daily drivers included.</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="g-card g-1"><span class="tag">Before</span><img src="images/gal1_before.webp" alt="Dusty GT-R engine bay before detailing" loading="lazy" decoding="async"></figure>
+      <figure class="g-card g-2"><span class="tag gold">After</span><img src="images/gal2_after.webp" alt="Detailed GT-R engine bay after service, closer angle" loading="lazy" decoding="async"></figure>
+      <figure class="g-card g-3"><img src="images/gal3_gtr.webp" alt="Detailed purple Nissan Skyline GT-R at a car show" loading="lazy" decoding="async"></figure>
+      <figure class="g-card g-4"><img src="images/gal4_f150.webp" alt="Detailed blue Ford F-150 pickup truck" loading="lazy" decoding="async"></figure>
+      <figure class="g-card g-5"><img src="images/gal5_classic.webp" alt="Detailed classic Ford pickup truck" loading="lazy" decoding="async"></figure>
+      <figure class="g-card g-6"><span class="tag">Our rig</span><img src="images/gal6_rig.webp" alt="RZ AutoSpa mobile detailing truck, fully equipped" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">Reviews</span>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>“Great price and quality work done leaving my car looking brand new.”</blockquote>
+        <p class="meta">Gabriel Flores · 1 review · 2 months ago</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>“Great service, 100% recommend he left my hand looking brand new ⭐️”</blockquote>
+        <p class="meta">jesus- ZR · 2 reviews · 2 months ago</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>“Best detail ever, good and fair price, was also flexible with the time!”</blockquote>
+        <p class="meta">Gael Vidaca Veloz · 1 review · 2 months ago</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="book">
+    <div class="book-inner">
+      <div>
+        <h3 class="section-title">Book your detail</h3>
+        <p class="section-note">Check what you need above in “What we detail,” then pick a real open time to the right — you'll confirm your service, address, and contact info in the same step.</p>
+        <div class="picked-block">
+          <span class="picked-label">Service(s) you've picked</span>
+          <div class="tag-row" id="bfSelectedServices"><p class="appt-empty">Check a service above to bring it here.</p></div>
+        </div>
+      </div>
+      <div>
+        <!-- Cal.com inline embed. CAL_LINK below is a placeholder — swap it for the
+             client's real event link (e.g. "rz-autospa/book-a-detail") once their
+             Cal.com account + admin invite is set up. Everything else needs no changes. -->
+        <div id="cal-booking" class="cal-embed">
+          <div class="cal-fallback">
+            <p><strong style="color:var(--ink)">Live booking calendar goes here.</strong> Once connected, this shows real open time slots and collects the service, date, time, address and contact info in one step.</p>
+            <a href="tel:19152534274" class="btn btn-ghost btn-sm">Or call (915) 253-4274</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>RZ AutoSpa — El Paso, TX · <a href="tel:19152534274">(915) 253-4274</a> · Instagram &amp; TikTok @rz_autospa</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const checks = document.querySelectorAll('.chk');
+  const apptList = document.getElementById('apptList');
+  const apptTotal = document.getElementById('apptTotal');
+  const apptNext = document.getElementById('apptNext');
+  const tagRow = document.getElementById('bfSelectedServices');
+
+  function render() {
+    const selected = Array.from(checks).filter(c => c.checked);
+    if (!selected.length) {
+      apptList.innerHTML = '<p class="appt-empty">No services added yet</p>';
+      apptTotal.textContent = '';
+    } else {
+      apptList.innerHTML = selected.map(c =>
+        `<div class="appt-item"><span>${c.dataset.name}</span><span class="p">$${parseFloat(c.dataset.price).toFixed(2)}</span></div>`
+      ).join('');
+      const total = selected.reduce((s, c) => s + parseFloat(c.dataset.price), 0);
+      apptTotal.textContent = `Total: $${total.toFixed(2)}`;
+    }
+    tagRow.innerHTML = selected.length
+      ? selected.map(c => `<span class="svc-tag">${c.dataset.name}</span>`).join('')
+      : '<p class="appt-empty">Check a service above to bring it here.</p>';
+  }
+  checks.forEach(c => c.addEventListener('change', render));
+  apptNext && apptNext.addEventListener('click', () => document.getElementById('book').scrollIntoView({ behavior: 'smooth' }));
+  render();
+})();
+</script>
+
+<script>
+// ---------- Cal.com booking embed ----------
+const CAL_LINK = "rz-auto/book-a-detail";
+// Identifier of the "Which service(s) are you booking?" custom question in
+// Cal.com (Event Type -> Booking form -> that question -> "Identifier").
+// Cal.com prefills any booking-question field whose identifier matches a key
+// passed in via config, so whatever's checked in the price list above gets
+// carried straight into this box instead of the customer retyping it.
+const CAL_FIELD_SERVICES = "Which-Service-are-you-booking";
+
+function loadCalScript() {
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {}; cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]);
+        } else p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+}
+
+function initCalEmbed() {
+  if (window.__calInited) return;
+  window.__calInited = true;
+
+  loadCalScript();
+
+  const selected = Array.from(document.querySelectorAll('.chk'))
+    .filter(c => c.checked)
+    .map(c => c.dataset.name);
+
+  const config = { layout: "month_view" };
+  if (selected.length) config[CAL_FIELD_SERVICES] = selected.join(", ");
+
+  const calContainer = document.getElementById("cal-booking");
+  if (calContainer) calContainer.innerHTML = "";
+
+  Cal("init", "book-a-detail", { origin: "https://cal.com" });
+  Cal.ns["book-a-detail"]("inline", {
+    elementOrSelector: "#cal-booking",
+    config,
+    calLink: CAL_LINK,
+  });
+  Cal.ns["book-a-detail"]("ui", { hideEventTypeDetails: false, layout: "month_view" });
+
+  // Fire the real conversion pixel event at the moment a booking actually
+  // completes (not just on page load) — this is what lets Meta measure and
+  // optimize for real booked appointments instead of just link clicks.
+  Cal.ns["book-a-detail"]("on", {
+    action: "bookingSuccessful",
+    callback: function () {
+      if (window.fbq) fbq('track', 'Schedule');
+    },
+  });
+}
+
+// Load the calendar right as the visitor reaches the Book section, not on
+// page load — that way whatever they've already checked above is captured
+// in the prefill instead of loading empty before they've picked anything.
+const bookSection = document.getElementById("book");
+if (bookSection && "IntersectionObserver" in window) {
+  const calObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { initCalEmbed(); calObserver.disconnect(); }
+    });
+  }, { rootMargin: "300px" });
+  calObserver.observe(bookSection);
+} else if (bookSection) {
+  initCalEmbed();
+}
+</script>
+
+</body>
+</html>
